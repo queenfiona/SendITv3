@@ -5,6 +5,6 @@ Starting gh-pages
 #Login feature
 Login feature branch
 #Finish feature
-Finish login
+Finish the login
 
 
