@@ -4,5 +4,7 @@ SendIT is a courier service that helps users deliver parcels to different destin
 Starting gh-pages
 #Start chore add js
 Add js
+# Finish
+Finish adding js
 
 
