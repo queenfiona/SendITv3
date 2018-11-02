@@ -6,5 +6,14 @@ Starting gh-pages
 Parcel delivery service branch
 #Finish feature
 Finish parcel delivery service
+# Login feature
+Login feature branch
+# Finish the feature
+Finish the login
+# Registration feature
+Registration feature branch
+# Finish registration feature
+Finish registration feature
+
 
 
