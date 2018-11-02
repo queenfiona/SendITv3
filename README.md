@@ -4,7 +4,31 @@ SendIT is a courier service that helps users deliver parcels to different destin
 Starting gh-pages
 # Admin Dashboard feature
 Start admin dashboard
-#Finish admin dashboard
+# Finish admin dashboard
 Finish admin dashboard
+# Homepage
+Start homepage
+# Finish homepage
+Finish homepage
+# User profile feature
+User profile branch
+# Finish user profile
+Finish user profile
+# Parcel delivery service feature
+Parcel delivery service branch
+# Finish feature
+Finish parcel delivery service
+# Login feature
+Login feature branch
+# Finish the feature
+Finish the login
+# Registration feature
+Registration feature branch
+# Finish registration feature
+Finish registration feature
+
+
+
+
 
 
