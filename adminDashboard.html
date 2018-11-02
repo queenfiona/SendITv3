@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A courier service for parcel delivery">
+	<meta name="author" content="Fiona Murie">
+	<link rel="stylesheet" type="text/css" href="../css/sendIT.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>SendIT|Administrator</title>
+	<script type="text/javascript" src="../js/sendIT.js"></script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div id="logo">
+				<h1>SendIT</h1>	
+			</div>	
+			<nav>
+				<ul>
+					<li  class="disabled"><a href="index.html">Home</a></li>
+					<li><a class="active" href="parcel.html">Parcel Deliver Service</a></li>
+					<li  class="disabled"><a href="about.html">About Us</a></li>
+					<li  class="disabled"><a href="registration.html">Register</a></li>
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</nav>		
+		</div>
+	</header>
+	<section>
+		<div class="container">
+			<div id="search">
+				<form>
+					<div class="sf">
+						<input type="text" name="search" placeholder="Search">						
+					</div>
+					<div class="sf">					
+						<button type="submit">Search</button>
+					</div>
+				</form>		
+			</div>	
+		</div>
+	</section>
+	
+	<section>
+		<div class="container">
+			<div id="listOfParcelOrders">
+				<h1>LIST OF ALL PARCEL DELIVERY ORDERS</h1>
+				<table cellspacing="10" id="lpoTable">
+					<tr>
+						<th>Order Number</th>
+						<th>Item Shipped</th>
+						<th>Status</th>
+						<th>Current Location</th>										
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Book</td>
+						<td>Nakuru</td>
+						<td>In-transit</td>
+						<td><button class="btn"><i class="fa fa-pencil"> Edit</i></button></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Watch</td>
+						<td>Voi</td>
+						<td>In-transit</td>	
+						<td><button class="btn"><i class="fa fa-pencil"> Edit</i></button></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Clothes</td>
+						<td>Kitui</td>
+						<td>Delivered</td>
+						<td><button class="btn"><i class="fa fa-pencil"> Edit</i></button></td>
+					</tr>
+				</table>
+				
+			</div>
+		</div>
+	</section>
+
+	<footer class="fixed">
+		<div class="container">
+			<p> SendIT Courier Service, Copyright &copy 2018</p>				
+		</div>			
+	</footer>
+
+
+</body>
+</html>

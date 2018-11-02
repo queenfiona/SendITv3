@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A courier service for parcel delivery">
+	<meta name="author" content="Fiona Murie">
+	<link rel="stylesheet" type="text/css" href="../css/sendIT.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>SendIT|User Profile</title>
+	<script type="text/javascript" src="../js/sendIT.js"></script>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div id="logo">
+				<h1>SendIT</h1>	
+			</div>	
+			<nav>
+				<ul>
+					<li  class="disabled"><a href="index.html">Home</a></li>
+					<li><a class="active" href="userProfile.html">User Profile</a></li>
+					<li  class="disabled"><a href="about.html">About Us</a></li>
+					<li  class="disabled"><a href="registration.html">Register</a></li>
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</nav>		
+		</div>
+	</header>
+
+	<div class="container" id="top">
+		<section class="counts">
+			<div class="container">	
+				<div class="count">
+					<h1>Number of parcels delivered</h1>
+					<p>1</p>				
+				</div>				
+			</div>
+		</section>
+		<section class="counts">
+			<div class="container">					
+				<div class="count">
+					<h1>Number of parcels in-transit</h1>
+					<p>2</p>				
+				</div>		
+			</div>
+		</section>
+		<p><button id="pdc-btn"><a href="parcel.html">Parcel delivery service</a></button></p>
+	</div>
+	<section>
+		<div class="container">
+			<div id="listOfParcelOrders">
+				<h1>LIST OF ALL PARCEL DELIVERY ORDERS</h1>
+				<table cellspacing="10" id="lpoTable">
+					<tr>
+						<th>Item Shipped</th>
+						<th>Weight(Kg)</th>
+						<th>Origin</th>
+						<th>Destination</th>
+						<th>Pickup Location</th>
+						<th>Price</th>
+						<th>Status</th>						
+					</tr>
+					<tr>
+						<td>Book</td>
+						<td>0.1 - 2.0</td>
+						<td>Nairobi</td>
+						<td>Kitale</td>
+						<td>Kitale Branch Office</td>
+						<td>KSh.500</td>
+						<td>In-transit</td>
+					</tr>
+					<tr>
+						<td>Watch</td>
+						<td>0.1 - 2.0</td>
+						<td>Nairobi</td>
+						<td>Mombasa</td>
+						<td>Mombasa Branch Office</td>
+						<td>KSh.500</td>
+						<td>In-transit</td>			
+
+					</tr>
+					<tr>
+						<td>Clothes</td>
+						<td>4.0 - 6.0</td>
+						<td>Nairobi</td>
+						<td>Kitui</td>
+						<td>Kitui Branch Office</td>
+						<td>KSh.1000</td>
+						<td>Delivered</td>
+					</tr>
+				</table>
+				
+			</div>
+		</div>
+	</section>
+
+	<footer class="fixed">
+		<div class="container">
+			<p> SendIT Courier Service, Copyright &copy 2018</p>				
+		</div>			
+	</footer>
+
+
+</body>
+</html>
