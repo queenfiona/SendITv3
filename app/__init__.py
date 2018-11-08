@@ -1,4 +1,4 @@
-from flask import Api, Blueprint
+from flask import Flask, Blueprint
 from .api.v1 import version_1
 
 
