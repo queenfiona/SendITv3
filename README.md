@@ -6,4 +6,7 @@ Start challenge two base branch story
 Start setup API development environment branch story
 # Start create post API for parcel delivery orders story
 Create a feature branch for post API and start create post API for parcel delivery orders story
+# Start fetch all parcel delivery orders story
+Create a feature branch for fetching all parcel delivery orders
+
 
