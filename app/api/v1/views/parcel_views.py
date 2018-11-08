@@ -1,6 +1,6 @@
 from flask import Flask, request, make_response, jsonify
 from flask_restful import Resource, reqparse
-from ..models import  ParcelOrder
+from ..models.parcel_models import  ParcelOrder
 
 
 class ParcelOrderView(Resource, ParcelOrder):
