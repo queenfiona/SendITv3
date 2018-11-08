@@ -1,5 +1,6 @@
 from flask import Flask, request, make_response, jsonify
 from flask_restful import Resource, reqparse
+
 from ..models.parcel_models import  ParcelOrder
 
 
@@ -18,7 +19,7 @@ class ParcelOrderView(Resource, ParcelOrder):
         weight = data["weight"]
 
         payload = self.parcel.create_parcel_delivery_order(
-            user, item_shipped, origin, destination,weight)
+            user, item_shipped, origin, destination, weight)
 
         return make_response(jsonify(payload), 201)
 
