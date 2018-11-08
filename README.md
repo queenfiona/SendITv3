@@ -8,6 +8,8 @@ Start setup api development environment chore
 Finish setting up api development environment
 # Start feature post api branch
 Start parcel post api story
+# Start feature get api branch
+Start fetch all parcels api story
 
 
 
