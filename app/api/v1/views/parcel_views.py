@@ -25,7 +25,17 @@ class ParcelOrderView(Resource, ParcelOrder):
     def get(self):
         parcel_delivery_orders = self.parcel.get_all_parcel_delivery_orders()
         payload = {
-            "message":"success",
+            "message": "success",
             "parcel orders": parcel_delivery_orders
         }
         return make_response(jsonify(payload), 200)
+
+
+class SpecificParcelOrderView(Resource, ParcelOrder):
+    def __init__(self):
+        self.parcel = ParcelOrder()
+
+    def get(self, parcel_id):
+        parcel_delivery_order = self.parcel.get_specific_parcel_delivery_order_by_id(
+            parcel_id)
+        return make_response(jsonify(parcel_delivery_order))
