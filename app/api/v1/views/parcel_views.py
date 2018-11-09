@@ -32,10 +32,27 @@ class ParcelOrderView(Resource, ParcelOrder):
 
 
 class SpecificParcelOrderView(Resource, ParcelOrder):
+    """docstring for SpecificParcelOrderView"""
+
     def __init__(self):
         self.parcel = ParcelOrder()
 
     def get(self, parcel_id):
         parcel_delivery_order = self.parcel.get_specific_parcel_delivery_order_by_id(
             parcel_id)
-        return make_response(jsonify(parcel_delivery_order))
+        return make_response(jsonify(parcel_delivery_order), 200)
+
+        if not parcel_delivery_order:
+            return make_response(jsonify({"message": "Order not found"}), 404)
+
+
+class UserSpecificParcelOrderView(Resource, ParcelOrder):
+    """docstring for UserSpecificParcelOrderView"""
+
+    def __init__(self):
+        self.parcel = ParcelOrder()
+
+    def get(self, user_id):
+        user_parcel_orders = self.parcel.get_all_parcel_delivery_orders_by_specific_user(
+            user_id)
+        return make_response(jsonify(user_parcel_orders), 200)
