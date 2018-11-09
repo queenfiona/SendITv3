@@ -8,5 +8,8 @@ Start setup API development environment branch story
 Create a feature branch for post API and start create post API for parcel delivery orders story
 # Start fetch all parcel delivery orders story
 Create a feature branch for fetching all parcel delivery orders
+# Start fetch a specific parcel delivery order by its parcel ID story
+Create a feature branch for fetching a specific parcel delivery order and start associated story
+
 
 
