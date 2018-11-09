@@ -38,7 +38,7 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
         self.parcel = ParcelOrder()
 
     def get(self, parcel_id):
-        parcel_delivery_order = self.parcel.get_specific_parcel_delivery_order_by_id(
+        parcel_delivery_order = self.parcel.get_specific_order_by_id(
             parcel_id)
         return make_response(jsonify(parcel_delivery_order), 200)
 
@@ -53,6 +53,6 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
         self.parcel = ParcelOrder()
 
     def get(self, user_id):
-        user_parcel_orders = self.parcel.get_all_parcel_delivery_orders_by_specific_user(
+        user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
             user_id)
         return make_response(jsonify(user_parcel_orders), 200)
