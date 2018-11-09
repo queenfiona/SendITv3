@@ -8,6 +8,8 @@ database = []
 
 
 class ParcelOrder(object):
+    """docstring for ParcelOrder"""
+
     def __init__(self):
         self.database = database
 
@@ -28,7 +30,7 @@ class ParcelOrder(object):
     def get_all_parcel_delivery_orders(self):
         return self.database
 
-    def get_specific_parcel_delivery_order_by_id(self, parcel_id):
+    def get_specific_order_by_id(self, parcel_id):
         for order in self.database:
             if order["parcel_id"] == int(parcel_id):
                 payload = {
@@ -37,8 +39,8 @@ class ParcelOrder(object):
                 }
                 return payload
 
-    def get_all_parcel_delivery_orders_by_specific_user(self, user):
-        orders=[]
+    def get_all_orders_by_specific_user(self, user):
+        orders = []
         for order in self.database:
             if order["user"] == str(user):
                 orders.append(order)
