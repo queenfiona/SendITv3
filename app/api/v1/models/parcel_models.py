@@ -27,3 +27,12 @@ class ParcelOrder(object):
 
     def get_all_parcel_delivery_orders(self):
         return self.database
+
+    def get_specific_parcel_delivery_order_by_id(self,parcel_id):
+        for order in self.database:
+            if order["parcel_id"] == int(parcel_id):
+                payload={
+                    "message":"success",
+                    "parcel_order":order
+                }
+                return payload
