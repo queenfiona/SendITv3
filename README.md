@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/queenfiona/SendITv3.svg?branch=ft-parcels-post-API-161814888)](https://travis-ci.com/queenfiona/SendITv3)
 # SendITv3
 SendIT is a courier service that helps users deliver parcels to different destinations provides courier quotes based on weight categories.
 # Start develop branch
