@@ -56,3 +56,21 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
         user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
             user_id)
         return make_response(jsonify(user_parcel_orders), 200)
+
+
+class CancelSpecificParcelOrderView(Resource, ParcelOrder):
+    """docstring for CancelSpecificParcelOrderView"""
+
+    def __init__(self):
+        self.parcel = ParcelOrder()
+
+    def put(self, parcel_id):
+        data = request.get_json()
+        status = data["status"]
+        cancelled_delivery_order = self.parcel.cancel_specific_order(
+            parcel_id, status)
+        payload = {
+            "message": "cancelled",
+            "order": cancelled_delivery_order
+        }
+        return make_response(jsonify(payload), 200)
