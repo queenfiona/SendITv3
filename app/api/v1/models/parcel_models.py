@@ -13,14 +13,14 @@ class ParcelOrder(object):
     def __init__(self):
         self.database = database
 
-    def create_parcel_delivery_order(self, user, item_shipped, origin, destination, weight, status="Not delivered"):
+    def create_parcel_delivery_order(self, user, item_shipped, origin, destination, weight, status="not_delivered"):
         payload = {
             "parcel_id": len(self.database) + 1,
             "user": user,
             "item_shipped": item_shipped,
             "origin": origin,
             "destination": destination,
-            "weight": weight,
+            "weight": int(weight),
             "status": status
         }
 
@@ -48,4 +48,23 @@ class ParcelOrder(object):
                     "message": "success",
                     "parcel_order": orders
                 }
-        return payload
+            return payload
+
+    def cancel_specific_order(self, parcel_id, status):
+        for order in self.database:
+            if order["parcel_id"] == parcel_id and order["status"] == "not_delivered":
+                order["status"] = status
+                order["user"] = order["user"]
+                order["item_shipped"] = order["item_shipped"]
+                order["origin"] = order["origin"]
+                order["destination"] = order["destination"]
+                order["weight"] = order["weight"]
+
+                index = next(index for index, order in enumerate(
+                    self.database) if order["parcel_id"] == parcel_id)
+                # Remove existing order to be cancelled
+                self.database.remove(self.database[index])
+                # Replace the order with the cancelled order
+                self.database.insert(index, order)
+
+                return order
