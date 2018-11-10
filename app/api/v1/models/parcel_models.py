@@ -20,7 +20,7 @@ class ParcelOrder(object):
             "item_shipped": item_shipped,
             "origin": origin,
             "destination": destination,
-            "weight": int(weight),
+            "weight":int(weight),
             "status": status
         }
 
