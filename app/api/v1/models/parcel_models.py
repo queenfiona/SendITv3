@@ -16,7 +16,7 @@ class ParcelOrder(object):
     def create_parcel_delivery_order(self, user_id, item_shipped, origin, destination, weight, status="not_delivered"):
         payload = {
             "parcel_id": len(self.database) + 1,
-            "user_id": user_id,
+            "user_id": int(user_id),
             "item_shipped": item_shipped,
             "origin": origin,
             "destination": destination,
@@ -42,7 +42,7 @@ class ParcelOrder(object):
                 orders.append(order)
             return orders
 
-    def cancel_specific_order(self, parcel_id, status):
+    def cancel_specific_order(self, parcel_id,status):
         for order in self.database:
             if order["parcel_id"] == parcel_id and order["status"] == "not_delivered":
                 order["status"] = status
