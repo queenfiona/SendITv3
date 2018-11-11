@@ -11,14 +11,14 @@ class ParcelOrderView(Resource, ParcelOrder):
 
     def post(self):
         data = request.get_json(force=True)
-        user = data["user"]
+        user_id = data["user_id"]
         item_shipped = data["item_shipped"]
         origin = data["origin"]
         destination = data["destination"]
         weight = data["weight"]
 
         payload = self.parcel.create_parcel_delivery_order(
-            user, item_shipped, origin, destination, weight)
+            user_id, item_shipped, origin, destination, weight)
 
         return make_response(jsonify(payload), 201)
 
@@ -38,4 +38,8 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
     def get(self, parcel_id):
         parcel_delivery_order = self.parcel.get_specific_parcel_delivery_order_by_id(
             parcel_id)
-        return make_response(jsonify(parcel_delivery_order))
+        payload = {
+            "message":"success",
+            "parcel order": parcel_delivery_order
+        }
+        return make_response(jsonify(payload),200)
