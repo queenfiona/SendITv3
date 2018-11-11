@@ -13,15 +13,15 @@ class ParcelOrder(object):
     def __init__(self):
         self.database = database
 
-    def create_parcel_delivery_order(self, user, item_shipped, origin, destination, weight, status="Not delivered"):
+    def create_parcel_delivery_order(self, user_id, item_shipped, origin, destination, weight, status="not_delivered"):
         payload = {
             "parcel_id": len(self.database) + 1,
-            "user": user,
-            "item_shipped": item_shipped,
-            "origin": origin,
-            "destination": destination,
-            "weight": weight,
-            "status": status
+            "user_id": int(user_id),
+            "item_shipped":item_shipped,
+            "origin":origin,
+            "destination":destination,
+            "weight":int(weight),
+            "status":status
         }
 
         self.database.append(payload)
@@ -39,13 +39,9 @@ class ParcelOrder(object):
                 }
                 return payload
 
-    def get_all_orders_by_specific_user(self, user):
+    def get_all_orders_by_specific_user(self,user_id):
         orders = []
         for order in self.database:
-            if order["user"] == str(user):
+            if order["user_id"] == int(user_id):
                 orders.append(order)
-                payload = {
-                    "message": "success",
-                    "parcel_order": orders
-                }
-        return payload
+        return orders
