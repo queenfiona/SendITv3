@@ -33,11 +33,7 @@ class ParcelOrder(object):
     def get_specific_order_by_id(self, parcel_id):
         for order in self.database:
             if order["parcel_id"] == int(parcel_id):
-                payload = {
-                    "message": "success",
-                    "parcel_order": order
-                }
-                return payload
+                return order
 
     def get_all_orders_by_specific_user(self, user_id):
         orders = []
