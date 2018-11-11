@@ -105,4 +105,4 @@ venv.bak/
 
 # version 2
 v2
-db_config
+db_config.py
