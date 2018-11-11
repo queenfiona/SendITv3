@@ -13,14 +13,14 @@ class ParcelOrder(object):
     def __init__(self):
         self.database = database
 
-    def create_parcel_delivery_order(self, user, item_shipped, origin, destination, weight, status="not_delivered"):
+    def create_parcel_delivery_order(self, user_id, item_shipped, origin, destination, weight, status="not_delivered"):
         payload = {
             "parcel_id": len(self.database) + 1,
-            "user": user,
+            "user_id": user_id,
             "item_shipped": item_shipped,
             "origin": origin,
             "destination": destination,
-            "weight":int(weight),
+            "weight": int(weight),
             "status": status
         }
 
@@ -39,22 +39,18 @@ class ParcelOrder(object):
                 }
                 return payload
 
-    def get_all_orders_by_specific_user(self, user):
+    def get_all_orders_by_specific_user(self, user_id):
         orders = []
         for order in self.database:
-            if order["user"] == str(user):
+            if order["user_id"] == int(user_id):
                 orders.append(order)
-                payload = {
-                    "message": "success",
-                    "parcel_order": orders
-                }
-            return payload
+            return orders
 
     def cancel_specific_order(self, parcel_id, status):
         for order in self.database:
             if order["parcel_id"] == parcel_id and order["status"] == "not_delivered":
                 order["status"] = status
-                order["user"] = order["user"]
+                order["user_id"] = order["user_id"]
                 order["item_shipped"] = order["item_shipped"]
                 order["origin"] = order["origin"]
                 order["destination"] = order["destination"]
