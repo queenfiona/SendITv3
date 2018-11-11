@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/queenfiona/SendITv3.svg?branch=ft-parcels-get-specific-API-161716421)](https://travis-ci.com/queenfiona/SendITv3)
 [![Coverage Status](https://coveralls.io/repos/github/queenfiona/SendITv3/badge.svg?branch=ft-parcels-get-specific-API-161716421)](https://coveralls.io/github/queenfiona/SendITv3?branch=ft-parcels-get-specific-API-161716421)
+[![Coverage Status](https://coveralls.io/repos/github/queenfiona/SendITv3/badge.svg?branch=ft-parcels-get-specific-API-161716421)](https://coveralls.io/github/queenfiona/SendITv3?branch=ft-parcels-get-specific-API-161716421)
 # SendITv3
 SendIT is a courier service that helps users deliver parcels to different destinations provides courier quotes based on weight categories.
 # Start develop branch
