@@ -72,7 +72,7 @@ class CancelSpecificParcelOrderView(Resource, ParcelOrder):
         self.parcel = ParcelOrder()
 
     def put(self, parcel_id):
-        data = request.get_json()
+        data=request.get_json()
         status = data["status"]
         cancelled_delivery_order = self.parcel.cancel_specific_order(
             parcel_id, status)
