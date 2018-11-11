@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/queenfiona/SendITv3.svg?branch=ft-get-user-orders-API-161716368)](https://travis-ci.com/queenfiona/SendITv3)
+[![Coverage Status](https://coveralls.io/repos/github/queenfiona/SendITv3/badge.svg?branch=ft-get-user-orders-API-161716368)](https://coveralls.io/github/queenfiona/SendITv3?branch=ft-get-user-orders-API-161716368)
 # SendITv3
 SendIT is a courier service that helps users deliver parcels to different destinations provides courier quotes based on weight categories.
 # Start develop branch
