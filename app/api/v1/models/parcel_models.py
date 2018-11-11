@@ -17,11 +17,11 @@ class ParcelOrder(object):
         payload = {
             "parcel_id": len(self.database) + 1,
             "user_id": int(user_id),
-            "item_shipped":item_shipped,
-            "origin":origin,
-            "destination":destination,
-            "weight":int(weight),
-            "status":status
+            "item_shipped": item_shipped,
+            "origin": origin,
+            "destination": destination,
+            "weight": int(weight),
+            "status": status
         }
 
         self.database.append(payload)
@@ -39,7 +39,7 @@ class ParcelOrder(object):
                 }
                 return payload
 
-    def get_all_orders_by_specific_user(self,user_id):
+    def get_all_orders_by_specific_user(self, user_id):
         orders = []
         for order in self.database:
             if order["user_id"] == int(user_id):
