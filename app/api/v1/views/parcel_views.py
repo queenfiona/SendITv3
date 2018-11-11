@@ -11,14 +11,14 @@ class ParcelOrderView(Resource, ParcelOrder):
 
     def post(self):
         data = request.get_json(force=True)
-        user = data["user"]
+        user_id = data["user_id"]
         item_shipped = data["item_shipped"]
         origin = data["origin"]
         destination = data["destination"]
         weight = data["weight"]
 
         payload = self.parcel.create_parcel_delivery_order(
-            user, item_shipped, origin, destination, weight)
+            user_id, item_shipped, origin, destination, weight)
 
         return make_response(jsonify(payload), 201)
 
@@ -40,7 +40,11 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
     def get(self, parcel_id):
         parcel_delivery_order = self.parcel.get_specific_order_by_id(
             parcel_id)
-        return make_response(jsonify(parcel_delivery_order), 200)
+        payload = {
+            "message": "success",
+            "parcel order": parcel_delivery_order
+        }
+        return make_response(jsonify(payload), 200)
 
         if not parcel_delivery_order:
             return make_response(jsonify({"message": "Order not found"}), 404)
@@ -55,8 +59,11 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
     def get(self, user_id):
         user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
             user_id)
-        return make_response(jsonify(user_parcel_orders), 200)
-
+        payload = {
+            "message": "success",
+            "parcel orders": user_parcel_orders
+        }
+        return make_response(jsonify(payload), 200)
 
 class CancelSpecificParcelOrderView(Resource, ParcelOrder):
     """docstring for CancelSpecificParcelOrderView"""
