@@ -1,5 +1,7 @@
-from flask import Flask, request, make_response, jsonify
-from flask_restful import Resource, reqparse
+from flask import jsonify, make_response, request
+
+from flask_restful import Resource
+
 from ..models.parcel_models import ParcelOrder
 
 
@@ -65,6 +67,7 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
         }
         return make_response(jsonify(payload), 200)
 
+
 class CancelSpecificParcelOrderView(Resource, ParcelOrder):
     """docstring for CancelSpecificParcelOrderView"""
 
@@ -72,7 +75,7 @@ class CancelSpecificParcelOrderView(Resource, ParcelOrder):
         self.parcel = ParcelOrder()
 
     def put(self, parcel_id):
-        data=request.get_json()
+        data = request.get_json()
         status = data["status"]
         cancelled_delivery_order = self.parcel.cancel_specific_order(
             parcel_id, status)

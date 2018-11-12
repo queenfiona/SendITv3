@@ -1,5 +1,6 @@
 from flask import Flask
-from flask_restful import Api, Resource
+
+from flask_restful import Api
 
 app = Flask(__name__)
 api = Api(app)
@@ -42,21 +43,22 @@ class ParcelOrder(object):
                 orders.append(order)
             return orders
 
-    def cancel_specific_order(self, parcel_id,status):
+    def cancel_specific_order(self, parcel_id, status):
         for order in self.database:
-            if order["parcel_id"] == parcel_id and order["status"] == "not_delivered":
-                order["status"] = status
-                order["user_id"] = order["user_id"]
-                order["item_shipped"] = order["item_shipped"]
-                order["origin"] = order["origin"]
-                order["destination"] = order["destination"]
-                order["weight"] = order["weight"]
+            if order["parcel_id"] == parcel_id:
+                if order["status"] == "not_delivered":
+                    order["status"] = status
+                    order["user_id"] = order["user_id"]
+                    order["item_shipped"] = order["item_shipped"]
+                    order["origin"] = order["origin"]
+                    order["destination"] = order["destination"]
+                    order["weight"] = order["weight"]
 
-                index = next(index for index, order in enumerate(
-                    self.database) if order["parcel_id"] == parcel_id)
-                # Remove existing order to be cancelled
-                self.database.remove(self.database[index])
-                # Replace the order with the cancelled order
-                self.database.insert(index, order)
+                    index = next(index for index, order in enumerate(
+                        self.database) if order["parcel_id"] == parcel_id)
+                    # Remove existing order to be cancelled
+                    self.database.remove(self.database[index])
+                    # Replace the order with the cancelled order
+                    self.database.insert(index, order)
 
-                return order
+                    return order
