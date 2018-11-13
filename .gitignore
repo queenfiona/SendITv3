@@ -106,3 +106,6 @@ venv.bak/
 # version 2
 v2
 db_config.py
+
+# code
+.vscode/

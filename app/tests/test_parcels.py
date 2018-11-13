@@ -1,13 +1,14 @@
+"""docstring for unittest import."""
 import unittest
 import json
-from flask import Flask
 from app import create_app
 
 
 class TestCase(unittest.TestCase):
-    """docstring for TestCase"""
+    """docstring for TestCase."""
 
     def setUp(self):
+         """docstring for setUp method."""
         app = create_app()
         self.client = app.test_client()
         self.data = {

@@ -1,4 +1,5 @@
 from flask import jsonify, make_response, request
+"""docstring for flask import."""
 
 from flask_restful import Resource
 
@@ -6,12 +7,14 @@ from ..models.parcel_models import ParcelOrder
 
 
 class ParcelOrderView(Resource, ParcelOrder):
-    """docstring for ParcelOrderView"""
+    """docstring for ParcelOrderView."""
 
     def __init__(self):
+        """Doctstring for ParcelOrderView init method."""
         self.parcel = ParcelOrder()
 
     def post(self):
+        """Doctstring for ParcelOrderView post method."""
         data = request.get_json(force=True)
         user_id = data["user_id"]
         item_shipped = data["item_shipped"]
@@ -25,6 +28,7 @@ class ParcelOrderView(Resource, ParcelOrder):
         return make_response(jsonify(payload), 201)
 
     def get(self):
+        """Doctstring for ParcelOrderView get method."""
         parcel_delivery_orders = self.parcel.get_all_parcel_delivery_orders()
         payload = {
             "message": "success",
@@ -34,12 +38,14 @@ class ParcelOrderView(Resource, ParcelOrder):
 
 
 class SpecificParcelOrderView(Resource, ParcelOrder):
-    """docstring for SpecificParcelOrderView"""
+    """docstring for SpecificParcelOrderView."""
 
     def __init__(self):
+        """Doctstring for SpecificParcelOrderView init method."""
         self.parcel = ParcelOrder()
 
     def get(self, parcel_id):
+        """Doctstring for SpecificParcelOrderView get method."""
         parcel_delivery_order = self.parcel.get_specific_order_by_id(
             parcel_id)
         payload = {
@@ -49,11 +55,12 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
         return make_response(jsonify(payload), 200)
 
         if not parcel_delivery_order:
+              """Doctstring for SpecificParcelOrderView init method."""
             return make_response(jsonify({"message": "Order not found"}), 404)
 
 
 class UserSpecificParcelOrderView(Resource, ParcelOrder):
-    """docstring for UserSpecificParcelOrderView"""
+    """docstring for UserSpecificParcelOrderView."""
 
     def __init__(self):
         self.parcel = ParcelOrder()
@@ -69,14 +76,14 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
 
 
 class CancelSpecificParcelOrderView(Resource, ParcelOrder):
-    """docstring for CancelSpecificParcelOrderView"""
+    """docstring for CancelSpecificParcelOrderView."""
 
     def __init__(self):
         self.parcel = ParcelOrder()
 
     def put(self, parcel_id):
-        data = request.get_json()
-        status = data["status"]
+        # data = request.get_json()
+        # status = data["status"]
         cancelled_delivery_order = self.parcel.cancel_specific_order(
             parcel_id, status)
         payload = {

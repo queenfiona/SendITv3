@@ -1,4 +1,5 @@
 class Config(object):
+	"""docstring for Config"""
     DEBUG = False
     TESTING = False    
 

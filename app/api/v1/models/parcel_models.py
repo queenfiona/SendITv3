@@ -1,4 +1,5 @@
 from flask import Flask
+"""docstring for flask."""
 
 from flask_restful import Api
 
@@ -9,9 +10,10 @@ database = []
 
 
 class ParcelOrder(object):
-    """docstring for ParcelOrder"""
+    """docstring for ParcelOrder."""
 
-    def __init__(self):
+   def __init__(self):
+    """docstring for parcel models __init__."""
         self.database = database
 
     def create_parcel_delivery_order(self, user_id, item_shipped, origin, destination, weight, status="not_delivered"):
@@ -47,7 +49,7 @@ class ParcelOrder(object):
         for order in self.database:
             if order["parcel_id"] == parcel_id:
                 if order["status"] == "not_delivered":
-                    order["status"] = status
+                    order["status"] = "cancel"
                     order["user_id"] = order["user_id"]
                     order["item_shipped"] = order["item_shipped"]
                     order["origin"] = order["origin"]
