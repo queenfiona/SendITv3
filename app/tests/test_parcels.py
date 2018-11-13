@@ -11,6 +11,7 @@ class TestCase(unittest.TestCase):
         """Docstring for setUp method."""
         app = create_app()
         self.client = app.test_client()
+        self.c = 'application/json'
         self.data = {
             "user_id": 1,
             "parcel_id": 1,
@@ -20,43 +21,49 @@ class TestCase(unittest.TestCase):
             "weight": 5,
             "status": "not_delivered"
         }
-        self.c = 'application/json'
 
     def tearDown(self):
         """Docstring for tearDown method."""
         pass
 
     def test_post_parcels_api(self):
-        """Docstring for setUp method."""
+        """Docstring for post API method."""
         res = self.client.post(
             '/api/v1/parcels', data=json.dumps(self.data), content_type=self.c)
         self.assertEqual(res.status_code, 201)
 
     def test_get_all_parcels_api(self):
-        """Docstring for setUp method."""
+        """Docstring for get API method."""
         res = self.client.get(
             '/api/v1/parcels', data=json.dumps(self.data), content_type=self.c)
         result = json.loads(res.data)
-        self.assertEqual(result["message"], "success")
+        self.assertEqual(result["message"], "Order made")
         self.assertEqual(res.status_code, 200)
 
     def test_get_by_id_api(self):
-        """Docstring for setUp method."""
-        c = "application/json"
+        """Docstring for get by id API method."""
+        j = "application/json"
         res = self.client.get(
-            '/api/v1/parcels/1', data=json.dumps(self.data), content_type=c)
+            '/api/v1/parcels/1', data=json.dumps(self.data), content_type=j)
         result = json.loads(res.data)
         self.assertEqual(result["message"], "success")
         self.assertEqual(res.status_code, 200)
 
     def test_get_by_user_id_api(self):
-        """Docstring for setUp method."""
+        """Docstring for get by user id API method."""
         res = self.client.get(
-            '/api/v1/users/1/parcels', data=json.dumps(self.data), content_type=self.c)
+            '/api/v1/users/1/parcels', data=json.dumps(self.data))
         result = json.loads(res.data)
         self.assertEqual(result["message"], "success")
         self.assertEqual(res.status_code, 200)
 
+    def test_put_parcels_api(self):
+        """Docstring for put API method."""
+        res = self.client.put(
+            '/api/v1/parcels/1/cancel', data=json.dumps(self.data))
+        result = json.loads(res.data)
+        self.assertEqual(result["message"], "cancelled")
+        self.assertEqual(res.status_code, 200)
 
 if __name__ == "__main__":
     unittest.main()
