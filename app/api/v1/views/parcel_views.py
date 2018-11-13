@@ -30,17 +30,17 @@ class ParcelOrderView(Resource, ParcelOrder):
     def get(self):
         """Doctstring for ParcelOrderView get method."""
         parcel_delivery_orders = self.parcel.get_all_parcel_delivery_orders()
-        payload = {
-            "message": "Order made",
-            "parcel orders": parcel_delivery_orders
-        }
-        return make_response(jsonify(payload), 200)
-
-        if not payload:
-            not_found = {
+        if parcel_delivery_orders:
+            payload = {
+                "message": "Order made",
+                "parcel orders": parcel_delivery_orders
+            }
+            return make_response(jsonify(payload), 200)
+        else:
+            payload = {
                 "message": "No order made yet"
             }
-            return make_response(jsonify(not_found), 404)
+            return make_response(jsonify(payload), 404)
 
 
 class SpecificParcelOrderView(Resource, ParcelOrder):
@@ -54,14 +54,13 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
         """Doctstring for SpecificParcelOrderView get method."""
         parcel_delivery_order = self.parcel.get_specific_order_by_id(
             parcel_id)
-        payload = {
-            "message": "success",
-            "parcel order": parcel_delivery_order
-        }
-        return make_response(jsonify(payload), 200)
-
-        if not parcel_delivery_order:
-            """Doctstring for order not found."""
+        if parcel_delivery_order:
+            payload = {
+                "message": "success",
+                "parcel order": parcel_delivery_order
+            }
+            return make_response(jsonify(payload), 200)
+        else:
             return make_response(jsonify({"message": "Order not found"}), 404)
 
 
@@ -76,12 +75,13 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
         """Docstring for UserSpecificParcelOrderView get method."""
         user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
             user_id)
-        payload = {
-            "message": "success",
-            "parcel orders": user_parcel_orders
-        }
-        return make_response(jsonify(payload), 200)
-        if not user_parcel_orders:
+        if user_parcel_orders:
+            payload = {
+                "message": "success",
+                "parcel orders": user_parcel_orders
+            }
+            return make_response(jsonify(payload), 200)
+        else:
             """Doctstring for SpecificParcelOrderView init method."""
             payload = {
                 "message": "User orders not found"
@@ -100,13 +100,14 @@ class CancelSpecificParcelOrderView(Resource, ParcelOrder):
         """Docstring for CancelSpecificParcelOrderView put method."""
         cancelled_delivery_order = self.parcel.cancel_specific_order(
             parcel_id)
-        payload = {
-            "message": "cancelled",
-            "order": cancelled_delivery_order
-        }
-        return make_response(jsonify(payload), 200)
-        if cancelled_delivery_order == "null":
+        if cancelled_delivery_order:
             payload = {
-                "message": "Order could not be cancelled"
+                "message": "cancelled",
+                "order": cancelled_delivery_order
+            }
+            return make_response(jsonify(payload), 200)
+        else:
+            payload = {
+                "message": "Order has been cancelled"
             }
             return make_response(jsonify(payload), 404)

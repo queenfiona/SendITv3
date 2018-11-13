@@ -1,8 +1,6 @@
 """docstring for flask."""
 from flask import Flask
 
-from flask import jsonify, make_response
-
 from flask_restful import Api
 
 app = Flask(__name__)
@@ -71,9 +69,3 @@ class ParcelOrder(object):
                     self.database.insert(index, order)
 
                     return order
-
-                elif order["status"] == "cancel":
-                    payload = {
-                        "message": "Order already cancelled"
-                    }
-                    return make_response(jsonify(payload))

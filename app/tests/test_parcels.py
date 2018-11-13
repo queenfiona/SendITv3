@@ -37,8 +37,12 @@ class TestCase(unittest.TestCase):
         res = self.client.get(
             '/api/v1/parcels', data=json.dumps(self.data), content_type=self.c)
         result = json.loads(res.data)
-        self.assertEqual(result["message"], "Order made")
-        self.assertEqual(res.status_code, 200)
+        if res.status_code == 200:
+            self.assertEqual(result["message"], "Order made")
+            self.assertEqual(res.status_code, 200)
+        else:
+            self.assertEqual(result["message"], "No order made yet")
+            self.assertEqual(res.status_code, 404)
 
     def test_get_by_id_api(self):
         """Docstring for get by id API method."""
@@ -46,24 +50,37 @@ class TestCase(unittest.TestCase):
         res = self.client.get(
             '/api/v1/parcels/1', data=json.dumps(self.data), content_type=j)
         result = json.loads(res.data)
-        self.assertEqual(result["message"], "success")
-        self.assertEqual(res.status_code, 200)
+        if res.status_code == 200:
+            self.assertEqual(result["message"], "success")
+            self.assertEqual(res.status_code, 200)
+        else:
+            self.assertEqual(result["message"], "Order not found")
+            self.assertEqual(res.status_code, 404)
 
     def test_get_by_user_id_api(self):
         """Docstring for get by user id API method."""
         res = self.client.get(
             '/api/v1/users/1/parcels', data=json.dumps(self.data))
         result = json.loads(res.data)
-        self.assertEqual(result["message"], "success")
-        self.assertEqual(res.status_code, 200)
+        if res.status_code == 200:
+            self.assertEqual(result["message"], "success")
+            self.assertEqual(res.status_code, 200)
+        else:
+            self.assertEqual(result["message"], "User orders not found")
+            self.assertEqual(res.status_code, 404)
 
     def test_put_parcels_api(self):
         """Docstring for put API method."""
         res = self.client.put(
             '/api/v1/parcels/1/cancel', data=json.dumps(self.data))
         result = json.loads(res.data)
-        self.assertEqual(result["message"], "cancelled")
-        self.assertEqual(res.status_code, 200)
+        if res.status_code == 200:
+            self.assertEqual(result["message"], "cancelled")
+            self.assertEqual(res.status_code, 200)
+        else:
+            self.assertEqual(result["message"], "Order has been cancelled")
+            self.assertEqual(res.status_code, 404)
+
 
 if __name__ == "__main__":
     unittest.main()
