@@ -1,5 +1,5 @@
-from flask import jsonify, make_response, request
 """docstring for flask import."""
+from flask import jsonify, make_response, request
 
 from flask_restful import Resource
 
@@ -55,7 +55,7 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
         return make_response(jsonify(payload), 200)
 
         if not parcel_delivery_order:
-              """Doctstring for SpecificParcelOrderView init method."""
+            """Doctstring for SpecificParcelOrderView init method."""
             return make_response(jsonify({"message": "Order not found"}), 404)
 
 
@@ -63,9 +63,11 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
     """docstring for UserSpecificParcelOrderView."""
 
     def __init__(self):
+        """Docstring for UserSpecificParcelOrderView init method."""
         self.parcel = ParcelOrder()
 
     def get(self, user_id):
+        """Docstring for UserSpecificParcelOrderView get method."""
         user_parcel_orders = self.parcel.get_all_orders_by_specific_user(
             user_id)
         payload = {
@@ -79,13 +81,15 @@ class CancelSpecificParcelOrderView(Resource, ParcelOrder):
     """docstring for CancelSpecificParcelOrderView."""
 
     def __init__(self):
+        """Docstring for CancelSpecificParcelOrderView init method."""
         self.parcel = ParcelOrder()
 
     def put(self, parcel_id):
+        """Docstring for CancelSpecificParcelOrderView put method."""
         # data = request.get_json()
         # status = data["status"]
         cancelled_delivery_order = self.parcel.cancel_specific_order(
-            parcel_id, status)
+            parcel_id)
         payload = {
             "message": "cancelled",
             "order": cancelled_delivery_order
