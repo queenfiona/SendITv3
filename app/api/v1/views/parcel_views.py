@@ -31,10 +31,16 @@ class ParcelOrderView(Resource, ParcelOrder):
         """Doctstring for ParcelOrderView get method."""
         parcel_delivery_orders = self.parcel.get_all_parcel_delivery_orders()
         payload = {
-            "message": "success",
+            "message": "Order made",
             "parcel orders": parcel_delivery_orders
         }
         return make_response(jsonify(payload), 200)
+
+        if not payload:
+            not_found = {
+                "message": "No order made yet"
+            }
+            return make_response(jsonify(not_found), 404)
 
 
 class SpecificParcelOrderView(Resource, ParcelOrder):
@@ -55,7 +61,7 @@ class SpecificParcelOrderView(Resource, ParcelOrder):
         return make_response(jsonify(payload), 200)
 
         if not parcel_delivery_order:
-            """Doctstring for SpecificParcelOrderView init method."""
+            """Doctstring for order not found."""
             return make_response(jsonify({"message": "Order not found"}), 404)
 
 
@@ -75,6 +81,12 @@ class UserSpecificParcelOrderView(Resource, ParcelOrder):
             "parcel orders": user_parcel_orders
         }
         return make_response(jsonify(payload), 200)
+        if not user_parcel_orders:
+            """Doctstring for SpecificParcelOrderView init method."""
+            payload = {
+                "message": "User orders not found"
+            }
+            return make_response(jsonify(payload), 404)
 
 
 class CancelSpecificParcelOrderView(Resource, ParcelOrder):
@@ -86,8 +98,6 @@ class CancelSpecificParcelOrderView(Resource, ParcelOrder):
 
     def put(self, parcel_id):
         """Docstring for CancelSpecificParcelOrderView put method."""
-        # data = request.get_json()
-        # status = data["status"]
         cancelled_delivery_order = self.parcel.cancel_specific_order(
             parcel_id)
         payload = {
@@ -95,3 +105,8 @@ class CancelSpecificParcelOrderView(Resource, ParcelOrder):
             "order": cancelled_delivery_order
         }
         return make_response(jsonify(payload), 200)
+        if cancelled_delivery_order == "null":
+            payload = {
+                "message": "Order could not be cancelled"
+            }
+            return make_response(jsonify(payload), 404)
