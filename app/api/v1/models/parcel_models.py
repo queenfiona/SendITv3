@@ -1,6 +1,8 @@
 """docstring for flask."""
 from flask import Flask
 
+from flask import jsonify, make_response
+
 from flask_restful import Api
 
 app = Flask(__name__)
@@ -16,16 +18,16 @@ class ParcelOrder(object):
         """Docstring for parcel models __init__."""
         self.database = database
 
-    def create_parcel_delivery_order(self, user_id, item_shipped, origin, destination, weight, status="not_delivered"):
+    def create_parcel_delivery_order(self, uid, i, o, d, w, s="not_delivered"):
         """Docstring for create_parcel_delivery_order method."""
         payload = {
             "parcel_id": len(self.database) + 1,
-            "user_id": int(user_id),
-            "item_shipped": item_shipped,
-            "origin": origin,
-            "destination": destination,
-            "weight": int(weight),
-            "status": status
+            "user_id": int(uid),
+            "item_shipped": i,
+            "origin": o,
+            "destination": d,
+            "weight": int(w),
+            "status": s
         }
 
         self.database.append(payload)
@@ -49,7 +51,7 @@ class ParcelOrder(object):
                 orders.append(order)
             return orders
 
-    def cancel_specific_order(self, parcel_id, status):
+    def cancel_specific_order(self, parcel_id):
         """Docstring for cancel_specific_order method."""
         for order in self.database:
             if order["parcel_id"] == parcel_id:
@@ -69,3 +71,9 @@ class ParcelOrder(object):
                     self.database.insert(index, order)
 
                     return order
+
+                elif order["status"] == "cancel":
+                    payload = {
+                        "message": "Order already cancelled"
+                    }
+                    return make_response(jsonify(payload))
