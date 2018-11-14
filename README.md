@@ -20,7 +20,7 @@ Create a feature branch for cancelling a parcel delivery order and start associa
 
 # Manual to test application
 # In terminal:
-	git clone 
+	git clone https://github.com/queenfiona/SendITv3.git
 	cd into the cloned repo
 	git checkout ft-parcels-put-API-161716449
 # To run:
