@@ -22,7 +22,7 @@ Create a feature branch for cancelling a parcel delivery order and start associa
 # In terminal:
 	git clone https://github.com/queenfiona/SendITv3.git
 	cd into the cloned repo
-	git checkout ft-parcels-put-API-161716449
+	git checkout develop
 # To run:
 # Heroku
 	In terminal type: heroku local
