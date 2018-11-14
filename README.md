@@ -19,12 +19,12 @@ Create a feature branch for fetching all parcel delivery orders of a specific us
 Create a feature branch for cancelling a parcel delivery order and start associated story
 
 # Manual to test application
-In terminal:
+# In terminal:
 	git clone 
 	cd into the cloned repo
 	git checkout ft-parcels-put-API-161716449
-To run:
-Heroku
+# To run:
+# Heroku
 	In terminal type: heroku local
 	Open postman to run API endpoints to:
 		1. Make a parcel delivery order
@@ -37,7 +37,7 @@ Heroku
 			GET https://send-it-v1.herokuapp.com/api/v1/users/1/parcels
 		5. Change status of a parcel delivery order
 			PUT https://send-it-v1.herokuapp.com/api/v1/parcels/1/cancel
-Flask
+# Flask
 	In terminal type:
 		export FLASK_APP=run.py
 		export FLASK_DEBUG=True
