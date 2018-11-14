@@ -16,16 +16,16 @@ class ParcelOrder(object):
         """Docstring for parcel models __init__."""
         self.database = database
 
-    def create_parcel_delivery_order(self, uid, i, o, d, w, s="not_delivered"):
+    def create_parcel_delivery_order(self, **kwargs):
         """Docstring for create_parcel_delivery_order method."""
         payload = {
             "parcel_id": len(self.database) + 1,
-            "user_id": int(uid),
-            "item_shipped": i,
-            "origin": o,
-            "destination": d,
-            "weight": int(w),
-            "status": s
+            "user_id": int(kwargs["u"]),
+            "item_shipped": kwargs["i"],
+            "origin": kwargs["o"],
+            "destination": kwargs["d"],
+            "weight": int(kwargs["w"]),
+            "status": "not_delivered"
         }
 
         self.database.append(payload)

@@ -23,7 +23,7 @@ class ParcelOrderView(Resource, ParcelOrder):
         weight = data["weight"]
 
         payload = self.parcel.create_parcel_delivery_order(
-            user_id, item_shipped, origin, destination, weight)
+            u=user_id, i=item_shipped, o=origin, d=destination, w=weight)
 
         return make_response(jsonify(payload), 201)
 
