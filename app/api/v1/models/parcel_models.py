@@ -52,8 +52,8 @@ class ParcelOrder(object):
     def cancel_specific_order(self, parcel_id):
         """Docstring for cancel_specific_order method."""
         for order in self.database:
-            if order["parcel_id"] == parcel_id:
-                if order["status"] == "not_delivered":
+            status, p_id = order["status"], order["parcel_id"]
+            if p_id == parcel_id and status == "not_delivered":
                     order["status"] = "cancel"
                     order["user_id"] = order["user_id"]
                     order["item_shipped"] = order["item_shipped"]
