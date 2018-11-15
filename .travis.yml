@@ -12,3 +12,16 @@ script:
 
 after_success:
   - coveralls
+
+# safelist
+branches:
+  only:
+    - develop
+    - ch-setup-API-development-environment-161814984
+    - ft-get-user-orders-API-161716368
+    - ft-parcels-get-API-161814924
+    - ft-parcels-get-specific-API-161716421
+    - ft-parcels-post-API-161814888
+    - ft-parcels-put-API-161716449
+
+
