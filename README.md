@@ -17,6 +17,8 @@ Create a feature branch for fetching a specific parcel delivery order and start 
 Create a feature branch for fetching all parcel delivery orders of a specific user and start associated story
 # Start cancel a parcel delivery order story
 Create a feature branch for cancelling a parcel delivery order and start associated story
+# Setup database configuration
+Create a chore branch to setup the database for the third challenge
 
 # Manual to test application
 # In terminal:
