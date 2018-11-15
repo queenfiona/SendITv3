@@ -103,6 +103,14 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# version 2 folder and configuration
+v2/
+db_config.py
+
 # version 2
 v2
 db_config.py
+
+# code
+.vscode/
+

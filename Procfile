@@ -1,1 +1,2 @@
-web: gunicorn SendITv3.app
+web: gunicorn "app:create_app()"
+
